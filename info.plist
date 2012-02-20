@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>contactEmailRot13</key>
+	<string>gubznf@fhogyrtenqvrag.pbz</string>
+	<key>contactName</key>
+	<string>Thomas Aylott</string>
+	<key>description</key>
+	<string>New shiny bundle for XHP, embedded XML in PHP.</string>
+	<key>name</key>
+	<string>PHP with XML — XHP</string>
+	<key>uuid</key>
+	<string>D58CFB6A-9234-45A5-9369-03B8CC7E4B77</string>
+</dict>
+</plist>
