@@ -176,12 +176,23 @@
 					</array>
 				</dict>
 				<dict>
-					<key>include</key>
-					<string>#block_tag</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>#xhp-embedded</string>
+					<key>begin</key>
+					<string>(?&lt;=[^/]&gt;)</string>
+					<key>end</key>
+					<string>(?=&lt;/)</string>
+					<key>name</key>
+					<string>meta.block.inner.xhp</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#block_tag</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#xhp-embedded</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
