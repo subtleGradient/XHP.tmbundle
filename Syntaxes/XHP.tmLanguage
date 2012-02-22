@@ -125,35 +125,27 @@
 		<key>block_tag</key>
 		<dict>
 			<key>begin</key>
-			<string>(&lt;)([^\s&lt;/&gt;]+)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.tag.block.open.${2/:/./g}.xhp</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.${2/:/./g}.xhp</string>
-				</dict>
-			</dict>
+			<string>(?=(&lt;)([^\s&lt;/&gt;]+))</string>
 			<key>contentName</key>
 			<string>meta.block.inner.${2/:/./g}.xhp</string>
 			<key>end</key>
-			<string>(&lt;/)(\2)(&gt;)|(?&lt;=/&gt;)</string>
+			<string>(&lt;/)(\2)(&gt;)|(/&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>meta.tag.block.close.${2/:/./g}.xhp</string>
+					<string>meta.tag.block.end.${2/:/./g}.xhp</string>
 				</dict>
 				<key>2</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.tag.${2/:/./g}.xhp</string>
+				</dict>
+				<key>4</key>
+				<dict>
+					<key>name</key>
+					<string>meta.tag.block.begin.${2/:/./g}.xhp</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -162,11 +154,19 @@
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\G</string>
+					<string>\G(&lt;)([^\s&lt;/&gt;]+)</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.${2/:/./g}.xhp</string>
+						</dict>
+					</dict>
 					<key>end</key>
-					<string>&gt;</string>
+					<string>&gt;|(?=/&gt;)</string>
 					<key>name</key>
-					<string>meta.tag.block.begin.xhp</string>
+					<string>meta.tag.block.begin.${2/:/./g}.xhp</string>
 					<key>patterns</key>
 					<array>
 						<dict>
