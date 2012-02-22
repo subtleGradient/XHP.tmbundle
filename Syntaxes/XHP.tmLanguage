@@ -124,73 +124,121 @@
 		</dict>
 		<key>block_tag</key>
 		<dict>
-			<key>begin</key>
-			<string>(?=(&lt;)([^\s&lt;/&gt;]+))</string>
-			<key>contentName</key>
-			<string>meta.block.inner.${2/:/./g}.xhp</string>
-			<key>end</key>
-			<string>(&lt;/)(\2)(&gt;)|(/&gt;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>0</key>
-				<dict>
-					<key>name</key>
-					<string>meta.tag.block.end.${2/:/./g}.xhp</string>
-				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.tag.${2/:/./g}.xhp</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>meta.tag.block.begin.${2/:/./g}.xhp</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.scope.tag.block.${2/:/./g}.xhp</string>
 			<key>patterns</key>
 			<array>
 				<dict>
 					<key>begin</key>
-					<string>\G(&lt;)([^\s&lt;/&gt;]+)</string>
+					<string>(&lt;)(script)([^&gt;]*)(&gt;)</string>
 					<key>beginCaptures</key>
 					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.block.start.${2/:/./g}.xhp</string>
+						</dict>
 						<key>2</key>
 						<dict>
 							<key>name</key>
 							<string>entity.name.tag.${2/:/./g}.xhp</string>
 						</dict>
 					</dict>
+					<key>contentName</key>
+					<string>meta.block.inner.${2/:/./g}.xhp</string>
 					<key>end</key>
-					<string>&gt;|(?=/&gt;)</string>
+					<string>(&lt;/)(script)(&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.block.end.${2/:/./g}.xhp</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.${2/:/./g}.xhp</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.tag.block.begin.${2/:/./g}.xhp</string>
+					<string>meta.scope.tag.block.${2/:/./g}.xhp</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>include</key>
-							<string>#attr</string>
+							<string>source.js</string>
 						</dict>
 					</array>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?&lt;=[^/]&gt;)</string>
+					<string>(?=(&lt;)([^\s&lt;/&gt;]+))</string>
+					<key>contentName</key>
+					<string>meta.block.inner.${2/:/./g}.xhp</string>
 					<key>end</key>
-					<string>(?=&lt;/)</string>
+					<string>(&lt;/)(\2)(&gt;)|(/&gt;)</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.block.end.${2/:/./g}.xhp</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.tag.${2/:/./g}.xhp</string>
+						</dict>
+						<key>4</key>
+						<dict>
+							<key>name</key>
+							<string>meta.tag.block.begin.${2/:/./g}.xhp</string>
+						</dict>
+					</dict>
 					<key>name</key>
-					<string>meta.block.inner.xhp</string>
+					<string>meta.scope.tag.block.${2/:/./g}.xhp</string>
 					<key>patterns</key>
 					<array>
 						<dict>
-							<key>include</key>
-							<string>#block_tag</string>
+							<key>begin</key>
+							<string>\G(&lt;)([^\s&lt;/&gt;]+)</string>
+							<key>beginCaptures</key>
+							<dict>
+								<key>2</key>
+								<dict>
+									<key>name</key>
+									<string>entity.name.tag.${2/:/./g}.xhp</string>
+								</dict>
+							</dict>
+							<key>end</key>
+							<string>&gt;|(?=/&gt;)</string>
+							<key>name</key>
+							<string>meta.tag.block.begin.${2/:/./g}.xhp</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#attr</string>
+								</dict>
+							</array>
 						</dict>
 						<dict>
-							<key>include</key>
-							<string>#xhp-embedded</string>
+							<key>begin</key>
+							<string>(?&lt;=[^/]&gt;)</string>
+							<key>end</key>
+							<string>(?=&lt;/)</string>
+							<key>name</key>
+							<string>meta.block.inner.xhp</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#block_tag</string>
+								</dict>
+								<dict>
+									<key>include</key>
+									<string>#xhp-embedded</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
