@@ -7,7 +7,7 @@
 	<key>keyEquivalent</key>
 	<string>^~P</string>
 	<key>name</key>
-	<string>XHP</string>
+	<string>PHP with XHP</string>
 	<key>patterns</key>
 	<array>
 		<dict>
@@ -44,17 +44,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>#block_tag</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>\byield\b</string>
-					<key>name</key>
-					<string>keyword.control.directive.hiphop.php</string>
-				</dict>
-				<dict>
-					<key>include</key>
-					<string>text.html.php#language</string>
+					<string>#php</string>
 				</dict>
 			</array>
 		</dict>
@@ -77,14 +67,14 @@
 						</dict>
 					</dict>
 					<key>end</key>
-					<string>(?=/?&gt;|\s)</string>
+					<string>(?=/?&gt;)|(?&lt;=["'}])</string>
 					<key>name</key>
 					<string>meta.property.$1.xhp</string>
 					<key>patterns</key>
 					<array>
 						<dict>
 							<key>match</key>
-							<string>\G=</string>
+							<string>\G\s*=\s*</string>
 							<key>name</key>
 							<string>punctuation.separator.key-value.tag.xml.xhp</string>
 						</dict>
@@ -117,6 +107,13 @@
 							</dict>
 							<key>name</key>
 							<string>string.quoted.double.xhp</string>
+							<key>patterns</key>
+							<array>
+								<dict>
+									<key>include</key>
+									<string>#xhp-embedded</string>
+								</dict>
+							</array>
 						</dict>
 					</array>
 				</dict>
@@ -244,6 +241,82 @@
 				</dict>
 			</array>
 		</dict>
+		<key>brace-round</key>
+		<dict>
+			<key>begin</key>
+			<string>\(</string>
+			<key>end</key>
+			<string>\)</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#php</string>
+				</dict>
+			</array>
+		</dict>
+		<key>php</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#block_tag</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\byield\b</string>
+					<key>name</key>
+					<string>keyword.control.directive.hiphop.php</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>(array)(\()</string>
+					<key>beginCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>entity.name.function.array.php</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.array.begin.php</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>meta.scope.inner</string>
+					<key>end</key>
+					<string>(\))</string>
+					<key>endCaptures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.array.end.php</string>
+						</dict>
+					</dict>
+					<key>name</key>
+					<string>meta.structure.array</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#php</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#brace-round</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>text.html.php#language</string>
+				</dict>
+			</array>
+		</dict>
 		<key>xhp-embedded</key>
 		<dict>
 			<key>begin</key>
@@ -274,7 +347,7 @@
 			<array>
 				<dict>
 					<key>include</key>
-					<string>text.html.php#language</string>
+					<string>#php</string>
 				</dict>
 			</array>
 		</dict>
