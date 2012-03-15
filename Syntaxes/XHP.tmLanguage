@@ -168,7 +168,7 @@
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(?=(&lt;)([^\s&lt;/&gt;]+))</string>
+					<string>(?=(&lt;)(\w[^\s&lt;/&gt;]+))</string>
 					<key>contentName</key>
 					<string>meta.block.inner.${2/:/./g}.xhp</string>
 					<key>end</key>
