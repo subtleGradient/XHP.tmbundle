@@ -12,7 +12,7 @@
 	<array>
 		<dict>
 			<key>begin</key>
-			<string>&lt;\?(?i:php|=)?</string>
+			<string>&lt;\?(?i:php|=|hh)?</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>0</key>
@@ -260,6 +260,12 @@
 			<key>patterns</key>
 			<array>
 				<dict>
+					<key>match</key>
+					<string>\w+&lt;.*&gt;</string>
+					<key>name</key>
+					<string>storage.type.hiphop.php.hack</string>
+				</dict>
+				<dict>
 					<key>include</key>
 					<string>#block_tag</string>
 				</dict>
@@ -345,6 +351,10 @@
 			<string>meta.embedded.block.php</string>
 			<key>patterns</key>
 			<array>
+				<dict>
+					<key>include</key>
+					<string>#xhp-embedded</string>
+				</dict>
 				<dict>
 					<key>include</key>
 					<string>#php</string>
